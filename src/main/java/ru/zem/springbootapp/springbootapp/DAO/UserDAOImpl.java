@@ -17,7 +17,6 @@ public class UserDAOImpl implements UserDao {
         return entityManager.createQuery("from User", User.class).getResultList();
     }
 
-
     @Override
     public void save(User user) {
         entityManager.persist(user);
