@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Info and Update User</title>
@@ -9,7 +9,7 @@
 <h1>Информация о User'е</h1>
 <br>
 
-<form th:method="PATCH" th:action="@{/user/edit/{id}(id=${user.getId()})}" th:object="${user}">
+<form th:method="PATCH" th:action="@{/edit}" th:object="${user}">
     <div>
         <label for="name">Name: </label>
         <input type="text" th:field="*{name}" id="name"/>

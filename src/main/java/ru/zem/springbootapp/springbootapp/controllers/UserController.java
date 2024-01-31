@@ -11,7 +11,6 @@ import ru.zem.springbootapp.springbootapp.service.UserService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
     private final UserService userService;
 
@@ -21,14 +20,14 @@ public class UserController {
     }
 
     //работает
-    @GetMapping
+    @GetMapping("/user")
     public String getAllUser(Model model) {
         List<User> allUser = userService.getAllUser();
         model.addAttribute("allUser", allUser);
         return "user/all-user";
     }
 
-    //работает
+
     @GetMapping("/new")
     public String NewUser(Model model) {
         model.addAttribute("user", new User());
@@ -41,20 +40,20 @@ public class UserController {
         return "redirect:/user";
     }
 
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") int id, Model model) {
+    @GetMapping("/edit")
+    public String edit(@RequestParam("id") Integer id, Model model) {
         model.addAttribute("user", userService.show(id));
         return "user/info-user";
     }
-    //работает
-    @PatchMapping("/edit/{id}")
+
+    @PatchMapping("/edit")
     public String update(@ModelAttribute("user") User user) {
         userService.update(user);
         return "redirect:/user";
     }
-    //работает
-    @DeleteMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") int id) {
+
+    @DeleteMapping("/delete")
+    public String deleteUser(@RequestParam("id") Integer id) {
         userService.deleteUser(id);
         return "redirect:/user";
     }

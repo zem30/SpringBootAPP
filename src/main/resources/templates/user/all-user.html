@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>User</title>
@@ -25,10 +25,10 @@
         <td th:text="${user.getDepartment()}"></td>
 
         <td>
-            <a th:href="@{/user/edit/{id}(id=${user.getId()})}">Update</a>
+            <a th:href="@{'edit?id=' + ${user.id}}">Update</a>
         </td>
         <td>
-            <form th:method="DELETE" th:action="@{/user/delete/{id}(id=${user.getId()})}">
+            <form th:method="DELETE" th:action="@{'delete?id=' + ${user.id}}">
                 <input type="submit" value="Delete">
             </form>
         </td>
@@ -36,7 +36,7 @@
 </table>
 
 <br>
-<a href="/user/new">Create new user!</a>
+<a href="/new">Create new user!</a>
 
 </body>
 </html>
